@@ -1,8 +1,8 @@
 import { BlockStack, Button, Card, InlineStack, Page, Box, Select, Text } from '@shopify/polaris';
 import { useState, useCallback } from 'react';
-import { useAuthenticatedFetch } from '@shopify/app-bridge-react'
-export default function SelectLanguage() {
-
+import { useAuthenticatedFetch, useNavigate } from '@shopify/app-bridge-react'
+export default function SelectLanguage({ setlang }) {
+    const navigate  = useNavigate()
     let fetch = useAuthenticatedFetch();
     const [selected, setSelected] = useState('en');
     const [loading, setloading] = useState(false)
@@ -32,7 +32,10 @@ export default function SelectLanguage() {
             .then(res => {
                 setloading(false);
                 if (res.status) {
-
+                    setlang(true);
+                    setTimeout(() => {
+                        navigate("/")
+                    }, 500);
                 }
                 console.log(res, "---res")
             })

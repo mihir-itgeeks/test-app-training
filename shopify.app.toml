@@ -3,7 +3,7 @@
 client_id = "3b388e97cd93bc3d09e702de3404cf63"
 name = "test-app-training"
 handle = "test-app-training-1"
-application_url = "https://connectivity-hayes-wales-handbook.trycloudflare.com"
+application_url = "https://occasion-nothing-chicken-sudan.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://connectivity-hayes-wales-handbook.trycloudflare.com/auth/callback",
-  "https://connectivity-hayes-wales-handbook.trycloudflare.com/auth/shopify/callback",
-  "https://connectivity-hayes-wales-handbook.trycloudflare.com/api/auth/callback"
+  "https://occasion-nothing-chicken-sudan.trycloudflare.com/auth/callback",
+  "https://occasion-nothing-chicken-sudan.trycloudflare.com/auth/shopify/callback",
+  "https://occasion-nothing-chicken-sudan.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

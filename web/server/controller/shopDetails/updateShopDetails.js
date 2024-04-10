@@ -17,7 +17,7 @@ export const updateShopDetails = async (req, res) => {
                         connection.query(`SELECT * FROM shopDetails WHERE name = '${shopData.data[0].name}'`, (err, result) => {
                             if (err) throw err
                             if (result.length === 0) {
-                                connection.query(`INSERT INTO shopDetails (name,customer_email,language,tutorial,currentPlan,charge_id,subscription_id) VALUES ('${shopData.data[0].name}','${shopData.data[0].customer_email}','en',0,'free',null,null)`,(err,result)=>{
+                                connection.query(`INSERT INTO shopDetails (name,customer_email,language,tutorial,currentPlan,charge_id,subscription_id) VALUES ('${shopData.data[0].name}','${shopData.data[0].customer_email}',null,0,'free',null,null)`,(err,result)=>{
                                     if(err)throw err;
                                 });
                                 res.status(200).json({ status: true, message: "Created! " ,})

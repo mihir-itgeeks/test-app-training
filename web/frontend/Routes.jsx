@@ -3,6 +3,10 @@ import PlanPage from "./components/screens/PlanPage";
 import EligibleCheck from "./components/layout/EligibleCheck";
 import { useState } from "react";
 import NotEligibleCard from "./components/layout/NotEligibleCard";
+import SelectLanguage from "./components/screens/SelectLanguage";
+import CustomerView from "./components/screens/CustomerView";
+import Settings from "./components/screens/Settings";
+import WelcomPage from "./components/screens/WelcomPage";
 
 /**
  * File-based routing.
@@ -22,20 +26,42 @@ export default function Routes({ pages }) {
 
   const [isEligible, setEligible] = useState(true);
   const [checkEligibleLoading, setCheckLoading] = useState(true);
-  const [lang,setlang]= useState(false);
+  const [lang, setlang] = useState(null);
+  const [tutorial, setTutorial] = useState(null);
+  const [loading, setloading] = useState(true);
 
   const routes = useRoutes(pages);
   const routeComponents = routes.map(({ path, component: Component }) => (
-    <Route key={path} path={path} element={isEligible ? <Component /> :<NotEligibleCard />} />
+    <Route
+      key={path}
+      path={path}
+      element={
+        isEligible ?
+          !lang ?
+            <SelectLanguage
+              setlang={setlang} />
+            :
+            <Component
+              tutorial={tutorial}
+              setTutorial={setTutorial}
+              loading={loading} />
+          :
+          <NotEligibleCard />
+      } />
+
   ));
   console.log(isEligible, "---isisEligible")
 
   const OtherRoute = [
-    { path: "/plan", element: <PlanPage /> }
+    { path: "/plan", element: <PlanPage /> },
+    { path: "/customer", element: tutorial === null || tutorial === 0 ? <WelcomPage setTutorial={setTutorial} /> : <CustomerView /> },
+    { path: "/setting", element: tutorial === null || tutorial === 0 ? <WelcomPage setTutorial={setTutorial} /> : <Settings /> },
+
+
   ];
 
   const ProtectedRoute = OtherRoute.map(({ path, element }, index) => {
-    return <Route path={path} element={isEligible ? element : <NotEligibleCard />} key={index} />
+    return <Route path={path} element={isEligible ? !lang ? <SelectLanguage setlang={setlang} /> : element : <NotEligibleCard />} key={index} />
   })
 
 
@@ -51,7 +77,14 @@ export default function Routes({ pages }) {
           isEligible={isEligible}
           setEligible={setEligible}
           checkEligibleLoading={checkEligibleLoading}
-          setCheckLoading={setCheckLoading} />
+          setCheckLoading={setCheckLoading}
+          setlanguage={setlang}
+          language={lang}
+          setTutorial={setTutorial}
+          tutorial={tutorial}
+          loading={loading}
+          setloading={setloading}
+        />
       }>
         {routeComponents}
         {ProtectedRoute}
