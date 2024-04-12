@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Page, Loading, Frame, Text } from '@shopify/polaris'
+import { Card, Page, Loading, Frame, Text,Image,MediaCard } from '@shopify/polaris'
 import WelcomPage from '../screens/WelcomPage'
 import { useAuthenticatedFetch, } from '@shopify/app-bridge-react'
 import SelectLanguage from '../screens/SelectLanguage';
@@ -16,11 +16,22 @@ export default function Layout({ props }) {
                 !props.tutorial ?
                     <WelcomPage setTutorial={props.setTutorial} />
                     :
-                    <Page narrowWidth>
-                        <Card>
-                            <Text as='h1' alignment='center' variant='heading2xl'>Dashboard</Text>
-
-                        </Card>
+                    <Page fullWidth title='Dashboard'>
+                        <MediaCard
+                            title="Getting Started"
+                            primaryAction={{
+                                content: 'Easy Subsciptions',
+                                onAction: () => { },
+                            }}
+                            description="Discover how Shopify can power up your entrepreneurial journey."
+                            // popoverActions={[{ content: 'Dismiss', onAction: () => { } }]}
+                        >
+                            <Image
+                            width={'100%'}
+                                
+                                source="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+                            />
+                        </MediaCard>
 
                     </Page>
 

@@ -1,0 +1,64 @@
+{
+    "plan": [
+        {
+            "name": "BASIC",
+            "price": "$0.1/ month",
+            "planList": [
+                "No Transaction Fees",
+                "Subscription Groups",
+                "One-Time + Subscription",
+                "Email Customization",
+                "Unlimited Emails",
+                "Order Tagging",
+                "Customer Tags",
+                "Subscription Discounts",
+                "Customer Management",
+                "Priority Support"
+
+            ]
+        },
+        {
+            "name": "PRO",
+            "price": "$39/ month",
+            "planList": [
+                "No Transaction Fees",
+                "Subscription Groups",
+                "One-Time + Subscription",
+                "Email Customization",
+                "Unlimited Emails",
+                "Order Tagging",
+                "Customer Tags",
+                "Subscription Discounts",
+                "Customer Management",
+                "Widget Customization",
+                "Dunning Management",
+                "Customer Product Swapping",
+                "Priority Support"
+
+            ]
+        },
+        {
+            "name": "PLUS",
+            "price": "$99/ month",
+            "planList": [
+                "No Transaction Fees",
+                "Subscription Groups",
+                "One-Time + Subscription",
+                "Email Customization",
+                "Unlimited Emails",
+                "Order Tagging",
+                "Customer Tags",
+                "Subscription Discounts",
+                "Customer Management",
+                "Widget Customization",
+                "Dunning Management",
+                "Customer Product Swapping",
+                "Import Functionality",
+                "Admin Product Swapping",
+                "Pre Paid Orders",
+                "Dedicated Success Manager"
+
+            ]
+        }
+    ]
+}

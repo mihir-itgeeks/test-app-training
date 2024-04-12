@@ -7,7 +7,7 @@ const NotEligibleCard = () => {
             <CalloutCard
                 title="We apolozige that you are not eligible for subscribe payments"
                 illustration="https://seed.nih.gov/images/eligibility.png"
-                primaryAction={{ content: 'Checkout' }}
+                primaryAction={{ content: 'Checkout' ,url:"https://help.shopify.com/en/manual/products/purchase-options/subscriptions/setup#eligibility-requirements"}}
                 secondaryAction={{ content: 'Learn more about Shopify Payments eligibility', variant: "plain", url: "https://help.shopify.com/en/manual/products/purchase-options/subscriptions/setup#eligibility-requirements" }}
             ></CalloutCard>
         </Page>

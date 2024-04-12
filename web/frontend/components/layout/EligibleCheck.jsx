@@ -13,10 +13,11 @@ export default function EligibleCheck({
     setTutorial,
     loading,
     setloading,
-    tutorial
+    tutorial,
+    setActivePlan,
+    activeplan
 }) {
 
-    const [activeplan, setActivePlan] = useState(null)
     let fetch = useAuthenticatedFetch();
     const location = useLocation();
     const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function EligibleCheck({
             .then(res => res.json())
             .then(res => {
                 if (res.status) {
+                    
                     setlanguage(res.result[0].language);
                     setTutorial(res.result[0].tutorial);
                     setActivePlan(res.result[0].currentPlan)
@@ -83,21 +85,21 @@ export default function EligibleCheck({
             eligibility_check();
         }
 
-        if (language !== true) {
+        if (language !== true || tutorial===1) {
             getShopData()
 
         }
     }, []);
 
-
     useEffect(() => {
-
-        if (tutorial === 1 && location.pathname !== "/plan") {
-            if (activeplan === 'free') {
+        console.log(location.pathname ,tutorial,activeplan)
+        if(language)
+        if (tutorial === 1  || tutorial === null && location.pathname !== "/plan") {
+            if (activeplan === null) {
                 navigate("/plan")
             }
         }
-    }, [location])
+    }, [location.pathname])
 
     return (
         checkEligibleLoading ?

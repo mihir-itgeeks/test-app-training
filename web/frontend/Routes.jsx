@@ -29,6 +29,8 @@ export default function Routes({ pages }) {
   const [lang, setlang] = useState(null);
   const [tutorial, setTutorial] = useState(null);
   const [loading, setloading] = useState(true);
+  const [activeplan, setActivePlan] = useState(null)
+
 
   const routes = useRoutes(pages);
   const routeComponents = routes.map(({ path, component: Component }) => (
@@ -37,7 +39,7 @@ export default function Routes({ pages }) {
       path={path}
       element={
         isEligible ?
-          !lang ?
+          lang===null ?
             <SelectLanguage
               setlang={setlang} />
             :
@@ -53,7 +55,7 @@ export default function Routes({ pages }) {
   console.log(isEligible, "---isisEligible")
 
   const OtherRoute = [
-    { path: "/plan", element: <PlanPage /> },
+    { path: "/plan", element: <PlanPage  setActivePlan={setActivePlan} activeplan={activeplan}/> },
     { path: "/customer", element: tutorial === null || tutorial === 0 ? <WelcomPage setTutorial={setTutorial} /> : <CustomerView /> },
     { path: "/setting", element: tutorial === null || tutorial === 0 ? <WelcomPage setTutorial={setTutorial} /> : <Settings /> },
 
@@ -61,7 +63,7 @@ export default function Routes({ pages }) {
   ];
 
   const ProtectedRoute = OtherRoute.map(({ path, element }, index) => {
-    return <Route path={path} element={isEligible ? !lang ? <SelectLanguage setlang={setlang} /> : element : <NotEligibleCard />} key={index} />
+    return <Route path={path} element={isEligible ? lang===null ? <SelectLanguage setlang={setlang} /> : element : <NotEligibleCard />} key={index} />
   })
 
 
@@ -84,12 +86,14 @@ export default function Routes({ pages }) {
           tutorial={tutorial}
           loading={loading}
           setloading={setloading}
+          setActivePlan={setActivePlan}
+          activeplan={activeplan}
         />
       }>
         {routeComponents}
         {ProtectedRoute}
       </Route>
-      <Route path="*" element={<NotFound />} />
+      {/* <Route path="*" element={<NotFound />} /> */}
     </ReactRouterRoutes>
   );
 }

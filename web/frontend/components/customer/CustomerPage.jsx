@@ -33,6 +33,7 @@ export default function CustomerPage() {
   const [needUpdate, setUpdate] = useState()
   useEffect(() => {
     if (needUpdate) {
+      fetchProductList()
       setCreateScreen(true)
     }
   }, [needUpdate])
